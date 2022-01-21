@@ -64,6 +64,7 @@ function carryUsers(f){
     var comboUsers = document.getElementById("comboUsers");
 
     for(i = 0; i < users.length; i++){
+
         var option = document.createElement("option");        
         option.value = users[i].id;
         option.innerHTML = users[i].name;
@@ -93,14 +94,27 @@ function showPosts(i) {
 
 function carryPosts(f){
     
+    removeList();
+
     var posts = JSON.parse(f)
-
-    var text = document.getElementById("text");
-
+    var list = document.getElementById("list");
+    
     for(i = 0; i < posts.length; i++){
          
-        text.textContent = posts[i].title;        
+        var item = document.createElement("li");        
+        item.innerHTML = posts[i].title;
+        list.appendChild(item);       
     }   
+}
+
+function removeList() {
+
+    var list = document.getElementById("list");
+
+    while (list.hasChildNodes()) {
+
+        list.removeChild(list.firstChild);
+    }
 }
 
 
