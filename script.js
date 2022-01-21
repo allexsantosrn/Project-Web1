@@ -14,10 +14,12 @@ flexRadioDefault2.addEventListener('click', tasksTitle);
 flexRadioDefault2.addEventListener('click', showCombo);
 
 function hiddenCombo() {    
+
     document.getElementById("content").style.display = "none"; 
 }
 
-function showCombo() {    
+function showCombo() {   
+
     document.getElementById("content").style.display = "inline";
 }
 
@@ -31,6 +33,7 @@ function postsTitle() {
 }
 
 function setPostsTitle() {
+
     postsTitle();
 }
 
@@ -44,11 +47,13 @@ function tasksTitle() {
 }
 
 function setTasksTitle() {
+
     postsTitle();
 }
 
 
 window.onload = function() {
+
     xhttpAssincrono(carryUsers,1);
 }
 
@@ -69,26 +74,21 @@ function carryUsers(f){
 function selectUser() {
 
     var comboUsers = document.getElementById("comboUsers");  
-
     var a = comboUsers.selectedIndex;
-    console.log("O indice é: " + a);
-   
+      
     if (flexRadioDefault1.checked) {
         showPosts(a);
     }
 }
 
 function setSelect() {
+
     selectUser();
 }
 
-
-
 function showPosts(i) {
    
-    xhttpAssincrono(carryPosts,2,i);
-    console.log("O indice é: porras");
-    
+    xhttpAssincrono(carryPosts,2,i);   
 }
 
 function carryPosts(f){

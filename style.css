@@ -26,3 +26,7 @@ html, body {
 #main {
     margin-top: 30px;
 }
+
+#list {
+    display: none;
+}
