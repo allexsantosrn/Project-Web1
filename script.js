@@ -2,12 +2,12 @@ const flexRadioDefault1 = document.getElementById('flexRadioDefault1');
 const flexRadioDefault2 = document.getElementById('flexRadioDefault2');
 const comboUsers = document.getElementById('comboUsers');
 
-flexRadioDefault1.addEventListener('click', postsTitle);
+//flexRadioDefault1.addEventListener('click', postsTitle);
 flexRadioDefault1.addEventListener('click', hiddenCombo);
 flexRadioDefault1.addEventListener('click', setSelect);
 
 comboUsers.addEventListener('click', selectUser);
-comboUsers.addEventListener('click', setPostsTitle);
+//comboUsers.addEventListener('click', setPostsTitle);
 comboUsers.addEventListener('click', setTasksTitle);
 
 flexRadioDefault2.addEventListener('click', tasksTitle);
@@ -23,6 +23,7 @@ function showCombo() {
     document.getElementById("content").style.display = "inline";
 }
 
+/*
 function postsTitle() {
 
     if (comboUsers.value > 0) {
@@ -35,7 +36,7 @@ function postsTitle() {
 function setPostsTitle() {
 
     postsTitle();
-}
+} */
 
 function tasksTitle() {
     
@@ -48,7 +49,7 @@ function tasksTitle() {
 
 function setTasksTitle() {
 
-    postsTitle();
+    tasksTitle();
 }
 
 
@@ -57,9 +58,14 @@ window.onload = function() {
     xhttpAssincrono(carryUsers,1);
 }
 
+function setSelect() {
+
+    selectUser();
+}
+
 function carryUsers(f){
     
-    var users = JSON.parse(f)
+    var users = JSON.parse(f)   
 
     var comboUsers = document.getElementById("comboUsers");
 
@@ -77,14 +83,10 @@ function selectUser() {
     var comboUsers = document.getElementById("comboUsers");  
     var a = comboUsers.selectedIndex;
       
-    if (flexRadioDefault1.checked) {
+    if (flexRadioDefault1.checked && comboUsers.value > 0) {
         showPosts(a);
+        console.log('a');
     }
-}
-
-function setSelect() {
-
-    selectUser();
 }
 
 function showPosts(i) {
@@ -97,6 +99,8 @@ function carryPosts(f){
     removeList();
 
     var posts = JSON.parse(f)
+
+    document.getElementById('titulo').innerHTML = "Posts do usuário";
     var list = document.getElementById("list");
     
     for(i = 0; i < posts.length; i++){
