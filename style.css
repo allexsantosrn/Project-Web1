@@ -14,3 +14,15 @@ html, body {
     margin-top: 10px;
     margin-left: 180px;
 }
+.form-check2 {
+    margin-top: 10px;
+    margin-left: 200px;
+}
+
+#content {
+    display: none;
+}
+
+#main {
+    margin-top: 30px;
+}
