@@ -29,20 +29,23 @@ function tasksTitle() {
     }
 }
 
-function carryUsers() {
+window.onload = function() {
+    xhttpAssincrono(carryUsers,1);
+}
+
+function carryUsers(f){
+    
+    var users = JSON.parse(f)
 
     var comboUsers = document.getElementById("comboUsers");
 
-    var opt2 = document.createElement("option");
-    opt2.value = 1;
-    opt2.text = "Santo André";
-    comboUsers.add(opt2, comboUsers.options[1]);
-
-    var opt2 = document.createElement("option");
-    opt2.value = 2;
-    opt2.text = "Rio de Janeiro";
-    comboUsers.add(opt2, comboUsers.options[1]);
-} 
+    for(i = 0; i < users.length; i++){
+        var option = document.createElement("option");
+        option.innerHTML = users[i].name;
+        option.value = users[i].id;
+        comboUsers.appendChild(option);
+    }   
+}
 
 /*
  * Função AJAX base do tipo assíncrona.
@@ -77,4 +80,7 @@ function xhttpAssincrono(callBackFunction, type, value) {
     xhttp.open("GET", url, true);
     xhttp.send();
 }
+
+
+
 
