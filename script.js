@@ -1,8 +1,14 @@
 const flexRadioDefault1 = document.getElementById('flexRadioDefault1');
 const flexRadioDefault2 = document.getElementById('flexRadioDefault2');
+const comboUsers = document.getElementById('comboUsers');
 
 flexRadioDefault1.addEventListener('click', postsTitle);
 flexRadioDefault1.addEventListener('click', hiddenCombo);
+flexRadioDefault1.addEventListener('click', setSelect);
+
+comboUsers.addEventListener('click', selectUser);
+comboUsers.addEventListener('click', setPostsTitle);
+comboUsers.addEventListener('click', setTasksTitle);
 
 flexRadioDefault2.addEventListener('click', tasksTitle);
 flexRadioDefault2.addEventListener('click', showCombo);
@@ -17,17 +23,30 @@ function showCombo() {
 
 function postsTitle() {
 
-    if (document.getElementById("flexRadioDefault1").checked == true) {
-        document.getElementById('titulo').innerHTML = "Posts do usuário";       
+    if (comboUsers.value > 0) {
+        if (flexRadioDefault1.checked == true) {
+            document.getElementById('titulo').innerHTML = "Posts do usuário";       
+        }
     }
+}
+
+function setPostsTitle() {
+    postsTitle();
 }
 
 function tasksTitle() {
-
-    if (document.getElementById("flexRadioDefault2").checked == true) {
-        document.getElementById('titulo').innerHTML = "Tarefas do usuário";       
+    
+    if (comboUsers.value > 0) {
+        if (flexRadioDefault2.checked == true) {
+            document.getElementById('titulo').innerHTML = "Tarefas do usuário";       
+        }
     }
 }
+
+function setTasksTitle() {
+    postsTitle();
+}
+
 
 window.onload = function() {
     xhttpAssincrono(carryUsers,1);
@@ -40,12 +59,50 @@ function carryUsers(f){
     var comboUsers = document.getElementById("comboUsers");
 
     for(i = 0; i < users.length; i++){
-        var option = document.createElement("option");
-        option.innerHTML = users[i].name;
+        var option = document.createElement("option");        
         option.value = users[i].id;
+        option.innerHTML = users[i].name;
         comboUsers.appendChild(option);
     }   
 }
+
+function selectUser() {
+
+    var comboUsers = document.getElementById("comboUsers");  
+
+    var a = comboUsers.selectedIndex;
+    console.log("O indice é: " + a);
+   
+    if (flexRadioDefault1.checked) {
+        showPosts(a);
+    }
+}
+
+function setSelect() {
+    selectUser();
+}
+
+
+
+function showPosts(i) {
+   
+    xhttpAssincrono(carryPosts,2,i);
+    console.log("O indice é: porras");
+    
+}
+
+function carryPosts(f){
+    
+    var posts = JSON.parse(f)
+
+    var text = document.getElementById("text");
+
+    for(i = 0; i < posts.length; i++){
+         
+        text.textContent = posts[i].title;        
+    }   
+}
+
 
 /*
  * Função AJAX base do tipo assíncrona.
