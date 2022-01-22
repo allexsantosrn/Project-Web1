@@ -5,7 +5,6 @@ const flexRadioDefault3 = document.getElementById('flexRadioDefault3');
 const flexRadioDefault4 = document.getElementById('flexRadioDefault4');
 const flexRadioDefault5 = document.getElementById('flexRadioDefault5');
 
-//flexRadioDefault1.addEventListener('click', postsTitle);
 flexRadioDefault1.addEventListener('click', hiddenCombo);
 flexRadioDefault1.addEventListener('click', setSelect);
 
@@ -13,10 +12,7 @@ comboUsers.addEventListener('click', selectUserPosts);
 comboUsers.addEventListener('click', selectUserTodos);
 comboUsers.addEventListener('click', selectTodosFinished);
 comboUsers.addEventListener('click', selectTodosIncompleted);
-//comboUsers.addEventListener('click', setPostsTitle);
-//comboUsers.addEventListener('click', setTasksTitle);
 
-//flexRadioDefault2.addEventListener('click', tasksTitle);
 flexRadioDefault2.addEventListener('click', showCombo);
 flexRadioDefault2.addEventListener('click', setSelect2);
 flexRadioDefault2.addEventListener('click', setSelect4);
@@ -38,36 +34,6 @@ function showCombo() {
 
     document.getElementById("content").style.display = "inline";
 }
-
-/*
-function postsTitle() {
-
-    if (comboUsers.value > 0) {
-        if (flexRadioDefault1.checked == true) {
-            document.getElementById('titulo').innerHTML = "Posts do usuário";       
-        }
-    }
-}
-
-function setPostsTitle() {
-
-    postsTitle();
-} 
-
-function tasksTitle() {
-    
-    if (comboUsers.value > 0) {
-        if (flexRadioDefault2.checked == true) {
-            document.getElementById('titulo').innerHTML = "Tarefas do usuário";       
-        }
-    }
-}
-
-function setTasksTitle() {
-
-    tasksTitle();
-} */
-
 
 window.onload = function() {
 
@@ -300,7 +266,3 @@ function xhttpAssincrono(callBackFunction, type, value) {
     xhttp.open("GET", url, true);
     xhttp.send();
 }
-
-
-
-
